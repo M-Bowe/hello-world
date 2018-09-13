@@ -20,7 +20,13 @@ const app = express();
 // [START hello_world]
 // Say hello!
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!');
+  for (var i = 0; i < 10; i++) {
+    if ((i % 2) == 0) {
+        res.status(200).send('Even number');
+    }
+    else {
+      res.status(200).send('Odd number');
+    }
 });
 // [END hello_world]
 
