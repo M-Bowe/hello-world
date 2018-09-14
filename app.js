@@ -28,11 +28,14 @@ function reverseString(str) {
 }
 
 app.get('/', (req, res) => {
-  res.status(200).send(`Send a POST request in the form of /:<STRING> for string reversal`);
+  context.log(`GET 200`);
+  res.status(200).send(`Send a POST request in the form of /:'string' for string reversal`);
 });
 
 app.post('/:string', (req, res) => {
-  let reverse = reverseString(req.params.string);
+  let input = req.params.string;
+  let reverse = reverseString(input);
+  context.log(`POST 200: ${input} reversed to ${reverse}`);
   res.status(200).send(`String ${input} reversed into ${reverse}`);
 })
 
