@@ -23,29 +23,18 @@ function reverseString(str) {
     var reverseArray = splitString.reverse();
 
     var joinArray = reverseArray.join("");
-    
+
     return joinArray; // "olleh"
 }
 
-// [START hello_world]
-// Say hello!
 app.get('/', (req, res) => {
-  for (var i = 0; i < 100; i++) {
-    if ((i % 2) == 0) {
-      let message = "This is an even message";
-      let reverse = reverseString(message);
-      console.log(`i${i}: I just reversed ${message} into ${reverse}`);
-    }
-    else {
-      let message = "This is an odd message";
-      let reverse = reverseString(message);
-      console.log(`i${i}: I just reversed ${message} into ${reverse}`);
-    }
-  }
-
-  res.status(200).send(`String reversal complete`);
+  res.status(200).send(`Send a POST request in the form of /:<STRING> for string reversal`);
 });
-// [END hello_world]
+
+app.post('/:string', (req, res) => {
+  let reverse = reverseString(req.params.string);
+  res.status(200).send(`String ${input} reversed into ${reverse}`);
+})
 
 if (module === require.main) {
   // [START server]
