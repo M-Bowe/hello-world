@@ -17,20 +17,33 @@ const express = require('express');
 
 const app = express();
 
+function reverseString(str) {
+    var splitString = str.split("");
+
+    var reverseArray = splitString.reverse();
+
+    var joinArray = reverseArray.join("");
+    
+    return joinArray; // "olleh"
+}
+
 // [START hello_world]
 // Say hello!
 app.get('/', (req, res) => {
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 100; i++) {
     if ((i % 2) == 0) {
-      console.log('even');
+      let message = "This is an even message";
+      let reverse = reverseString(message);
+      console.log(`i${i}: I just reversed ${message} into ${reverse}`);
     }
     else {
-      console.log('odd');
+      let message = "This is an odd message";
+      let reverse = reverseString(message);
+      console.log(`i${i}: I just reversed ${message} into ${reverse}`);
     }
-    console.log(`i: ${i}, ix10: ${i*10}`);
   }
 
-  res.status(200).send(`Hello, world! i is ${i}`);
+  res.status(200).send(`String reversal complete`);
 });
 // [END hello_world]
 
