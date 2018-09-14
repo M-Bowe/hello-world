@@ -22,12 +22,15 @@ const app = express();
 app.get('/', (req, res) => {
   for (var i = 0; i < 10; i++) {
     if ((i % 2) == 0) {
-      res.status(200).send('Even number');
+      console.log('even');
     }
     else {
-      res.status(200).send('Odd number');
+      console.log('odd');
     }
+    console.log(`i: ${i}, ix10: ${i*10}`);
   }
+
+  res.status(200).send(`Hello, world! i is ${i}`);
 });
 // [END hello_world]
 
